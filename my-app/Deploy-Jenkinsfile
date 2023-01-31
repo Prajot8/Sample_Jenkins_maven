@@ -7,7 +7,6 @@ pipeline{
     stages{
         stage('Redirecting'){
             steps{
-            sh 'cd my-app'
             sh 'pwd'
             sh '''  ls
             echo $JAVA_HOME
@@ -17,6 +16,8 @@ pipeline{
         }
         stage('Build'){
             steps{
+              sh 'cd my-app'
+              sh 'ls'
               sh 'mvn clean install package'
             }
             
