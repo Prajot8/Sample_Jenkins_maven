@@ -16,7 +16,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-              sh''' cd /var/lib/jenkins/workspace/maven-build-n-deploy-pipeline/my-app/
+              sh''' cd /var/lib/jenkins/workspace/maven-build-n-deploy-pipeline/demo_jenkins_maven/
               pwd
               ls
                mvn clean install package '''
