@@ -1,13 +1,17 @@
 pipeline{
     agent any 
     tools{
-        maven 'Maven'
+        maven 'Maven',
+        jdk 'java'
     }
     stages{
         stage('Redirecting'){
             steps{
             sh 'cd my-app'
             sh 'pwd'
+            sh ''' echo $JAVA_HOME
+            echo $MAVEN_HOME
+            '''
             }
         }
         stage('Build'){
@@ -23,7 +27,7 @@ pipeline{
         }
         stage('Deploy on Tomcat9 server'){
             steps{
-                deploy adapters: [tomcat9(credentialsId: '34fb4462-43df-47bc-ab69-9c5cc3611e4c', path: '', url: 'http://65.2.140.103:8080/')], contextPath: null, war: '**/*.war'
+               deploy adapters: [tomcat9(credentialsId: 'updated credential', path: '', url: 'http://3.111.169.8:8080/')], contextPath: null, war: '**/*.war'
             }
         }
     }
