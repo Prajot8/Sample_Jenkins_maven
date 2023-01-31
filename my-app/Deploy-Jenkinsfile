@@ -9,7 +9,8 @@ pipeline{
             steps{
             sh 'cd my-app'
             sh 'pwd'
-            sh ''' echo $JAVA_HOME
+            sh '''  ls
+            echo $JAVA_HOME
             echo $MAVEN_HOME
             '''
             }
@@ -18,12 +19,7 @@ pipeline{
             steps{
               sh 'mvn clean install package'
             }
-            post{
-                success{
-                    echo "Archieving artifacts as war"
-                    archiveArtifacts artifacts: '**/target/*.war'
-                }
-            }
+            
         }
         stage('Deploy on Tomcat9 server'){
             steps{
