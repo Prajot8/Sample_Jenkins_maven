@@ -25,7 +25,9 @@ pipeline{
         }
         stage('Deploy on Tomcat9 server'){
             steps{
-               deploy adapters: [tomcat9(credentialsId: 'updated credential', path: '', url: 'http://3.111.169.8:8080/')], contextPath: null, war: '**/*.war'
+               deploy adapters: [tomcat9(credentialsId: 'updated credential', \
+               path: '', url: 'http://3.111.169.8:8080/')], \
+               contextPath: 'myApp', onFailure: false, war: '**/*.war'
             }
         }
     }
