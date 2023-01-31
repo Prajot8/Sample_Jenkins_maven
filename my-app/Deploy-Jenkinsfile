@@ -16,7 +16,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-              sh 'cd my-app/'
+              sh 'cd /var/lib/jenkins/workspace/maven-build-n-deploy-pipeline/my-app/'
               sh 'ls'
               sh 'mvn clean install package'
             }
