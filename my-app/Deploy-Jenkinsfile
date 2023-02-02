@@ -16,7 +16,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-              sh''' cd /var/lib/jenkins/workspace/maven-build-n-deploy-pipeline/spring-boot-maven-example-helloworld-master/
+              sh''' cd /var/lib/jenkins/workspace/maven-build-n-deploy-pipeline/java-hello-world-webapp-master/
               pwd
               ls
                mvn clean install package '''
