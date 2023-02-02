@@ -16,7 +16,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-              sh''' cd /var/lib/jenkins/workspace/maven-build-n-deploy-pipeline/demo_jenkins_maven/
+              sh''' cd /var/lib/jenkins/workspace/maven-build-n-deploy-pipeline/spring-boot-maven-example-helloworld-master/
               pwd
               ls
                mvn clean install package '''
@@ -26,7 +26,7 @@ pipeline{
         stage('Deploy on Tomcat9 server'){
             steps{
                deploy adapters: [tomcat9(credentialsId: 'updated credential', \
-               path: '', url: 'http://3.111.169.8:8080/')], \
+               path: '', url: 'http://13.233.223.69:8080/')], \
                contextPath: 'myApp', onFailure: false, war: '**/*.war'
             }
         }
