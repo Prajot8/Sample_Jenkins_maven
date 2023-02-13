@@ -16,7 +16,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-              sh''' cd /var/lib/jenkins/workspace/maven-build-n-deploy-pipeline/java-hello-world-webapp-master/
+              sh''' cd /var/lib/jenkins/workspace/maven-build-n-deploy-pipeline/my-app/
               pwd
               ls
                mvn clean install package '''
@@ -26,7 +26,7 @@ pipeline{
         stage('Deploy on Tomcat9 server'){
             steps{
                deploy adapters: [tomcat9(credentialsId: 'updated credential', \
-               path: '', url: 'http://13.233.223.69:8080/')], \
+               path: '', url: 'http://15.206.100.217:8080/')], \
                contextPath: 'myApp', onFailure: false, war: '**/*.war'
             }
         }
